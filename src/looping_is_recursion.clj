@@ -64,7 +64,19 @@
   ":(")
 
 (defn fast-fibo [n]
-  ":(")
+  (loop [down-from n total 1 total-prev 1]
+    (cond
+      (= n 0)
+        0
+
+      (= n 1)
+        1
+
+      (= down-from 1)
+        total-prev
+
+      :else
+        (recur (dec down-from) (+ total total-prev) total))))
 
 (defn cut-at-repetition [a-seq]
   [":("])
