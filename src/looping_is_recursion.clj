@@ -79,5 +79,11 @@
         (recur (dec down-from) (+ total total-prev) total))))
 
 (defn cut-at-repetition [a-seq]
-  [":("])
+  (loop [seen-vec []
+    (cond
+      (contains? (set seen-vec) (first a-seq))
+        seen-vec
+     
+      :else
+        (recur (conj seen-vec (first a-seq))))))
 
