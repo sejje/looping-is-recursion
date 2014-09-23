@@ -49,7 +49,16 @@
         (recur (inc n) (rest b-seq)))))
 
 (defn avg [a-seq]
-  -1)
+  (loop [acc 0 n 1 b-seq a-seq]
+    (cond
+      (empty? a-seq)
+        0
+
+      (empty? b-seq)
+        (/ acc n)
+
+      :else
+        (recur (+ acc (first b-seq)) (inc n) (rest b-seq)))))
 
 (defn parity [a-seq]
   ":(")
