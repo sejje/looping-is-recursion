@@ -49,7 +49,7 @@
         (recur (inc n) (rest b-seq)))))
 
 (defn avg [a-seq]
-  (loop [acc 0 n 1 b-seq a-seq]
+  (loop [acc 0 n 0 b-seq a-seq]
     (cond
       (empty? a-seq)
         0
