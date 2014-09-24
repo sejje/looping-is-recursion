@@ -61,7 +61,22 @@
         (recur (+ acc (first b-seq)) (inc n) (rest b-seq)))))
 
 (defn parity [a-seq]
-  ":(")
+  (loop [counts {} b-seq a-seq]
+    (cond
+      (empty? b-seq)
+        (let [results
+              (filter (fn [x] (odd? (val x))) counts)]
+          (keys results))
+      
+      :else  
+        (let [f (first b-seq)
+              new-counts
+              (if (contains? counts f)
+                (assoc counts f (inc (get counts f)))
+                (assoc counts f 1))]
+              
+          (recur new-counts (rest b-seq))))))
+        
 
 (defn fast-fibo [n]
   (loop [down-from n total 1 total-prev 1]
